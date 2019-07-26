@@ -1,0 +1,49 @@
+<h2>Know of a pet needing a home?</h2>
+<mat-card>
+  <div *ngIf="error.length > 0">
+    <li *ngFor="let i of error">{{i}}</li>
+  </div>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      Pet name:
+      <input matInput type="text" formControlName="name">
+      <mat-error *ngIf="addForm.get('name').invalid">Please enter a pet name at least 3 characters long</mat-error>
+    </mat-form-field> <br>
+    <mat-form-field>
+      Pet type:
+      <input matInput type="text" formControlName="type">
+      <mat-error *ngIf="addForm.get('type').invalid">Please enter a pet type at least 3 characters long</mat-error>
+    </mat-form-field> <br>
+    <mat-form-field>
+      Description:
+      <input matInput type="text" formControlName="description">
+      <mat-error *ngIf="addForm.get('description').invalid">Please enter a description at least 3 characters long</mat-error>
+    </mat-form-field> <br>
+
+    <mat-form-field>
+      Skills (optional):
+      <input matInput type="text" formControlName="skill1">
+    </mat-form-field> <br>
+    <mat-form-field>
+      <input matInput type="text" formControlName="skill2">
+    </mat-form-field> <br>
+    <mat-form-field>
+      <input matInput type="text" formControlName="skill3">
+    </mat-form-field> <br>
+
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">
+      Add pet
+    </button> <br>
+  </form>
+  <button
+    style="margin-top: 20px"
+    color="warn"
+    mat-raised-button
+    (click)="onCancel()">
+    Cancel
+  </button> <br>
+</mat-card>

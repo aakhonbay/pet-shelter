@@ -1,0 +1,39 @@
+<a routerLink="/pets">
+  <button mat-raised-button
+  color="accent">
+      Home
+  </button>
+  </a>
+<h2>Details about {{pet.name}}</h2>
+<div>
+  <mat-divider></mat-divider>
+  <h3>Pet type: </h3>
+  <mat-list role="list">
+    <mat-list-item role="listitem" >{{pet.type}}</mat-list-item>
+  </mat-list>
+  <h3>Description:</h3>
+  <mat-list role="list">
+    <mat-list-item role="listitem" >{{pet.description}}</mat-list-item>
+  </mat-list>
+  <h3>Skills:</h3>
+  <mat-list role="list">
+      <mat-list-item role="listitem" *ngIf="pet.skill[0]">{{pet.skill[0]}}</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="pet.skill[1]">{{pet.skill[1]}}</mat-list-item>
+      <mat-list-item role="listitem" *ngIf="pet.skill[2]">{{pet.skill[2]}}</mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+  <h3>Pet like:</h3>
+  <mat-list role="list">
+    <mat-list-item role="listitem" >{{likes}}</mat-list-item>
+  </mat-list>
+  <mat-divider></mat-divider>
+</div>
+<button mat-raised-button
+color="accent" type="button" (click)="onLikePet()" [disabled]="isDisabled">
+  Like this pet
+</button>
+
+<button mat-raised-button
+color="warn" (click)="onRemovePet()">
+   Adopt this pet
+  </button>

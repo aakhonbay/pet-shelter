@@ -1,0 +1,47 @@
+<mat-card>
+<h2>Edit this pet</h2>
+
+    <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        Pet name:
+        <input matInput type="text" formControlName="name">
+        <mat-error *ngIf="editForm.get('name').invalid">Please enter a pet name at least 3 characters long</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        Pet type:
+        <input matInput type="text" formControlName="type">
+        <mat-error *ngIf="editForm.get('type').invalid">Please enter a pet type at least 3 characters long</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        Description:
+        <input matInput type="text" formControlName="description">
+        <mat-error *ngIf="editForm.get('description').invalid">Please enter a description at least 3 characters long</mat-error>
+      </mat-form-field>
+
+      Skills (optional):
+      <mat-form-field>
+        <input matInput type="text" formControlName="skill1">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="skill2">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="skill3">
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="!editForm.valid"
+      >
+        Edit pet
+      </button>
+    </form>
+    <button (click)="onCancel()"
+    mat-raised-button
+    color="alert"
+    >
+    Cancel
+  </button>
+</mat-card>
