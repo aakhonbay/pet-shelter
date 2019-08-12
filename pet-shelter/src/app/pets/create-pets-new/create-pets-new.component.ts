@@ -44,12 +44,13 @@ export class CreatePetsNewComponent implements OnInit {
       if(res.ServerMessage == "Error"){
         let errs = res.Error.errors;
         for(let err in errs){
+          console.log(err)
           this.error.push(errs[err].message)
         }
       }
     },
     err => {
-      console.log('ERR',err)
+      this.error.push('Duplicate names are not allowed')
     })
   }
 

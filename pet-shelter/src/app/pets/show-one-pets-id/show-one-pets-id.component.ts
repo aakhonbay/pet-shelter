@@ -17,9 +17,7 @@ export class ShowOnePetsIdComponent implements OnInit {
 
   onLikePet(){
     this.isDisabled = true;
-    console.log(this.likes)
     this.likes++;
-    console.log(this.likes)
     this.service.modifyLikes(this.petId, this.likes).subscribe(
       res => {
         this.likes = +res.Items.rating;

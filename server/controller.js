@@ -17,15 +17,19 @@ module.exports = {
         // if(!request.body.pets){
         //     response.json({ServerMessage: "Error", Error:"New Movie must have a review"})
         // } else{
-            console.log('REQ BODY',request.body)
             Pet.create(request.body, function(error, item){
-                if(error){
-                    response.json({ServerMessage: "Error", Error: error})
-                }else{
+                if(error | !item){
                     console.log(item)
+                    response.status(400).json({ServerMessage: "Error", Error: error})
+                }else{
                     response.json({ServerMessage: "Success", Items: item})
                 }
             })
+            // .catch(
+            //     error => {
+            //         response.status(400).json({ServerMessage: "Error", Error: error})
+            //     }
+            // )
         // }
     },
     getPet: function(request, response){
